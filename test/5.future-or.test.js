@@ -5,6 +5,7 @@ const Future = require('../fluture.js');
 const FutureOr = Future.classes.FutureOr;
 const U = require('./util');
 const F = require('./futures');
+const type = require('sanctuary-type-identifiers');
 
 describe('Future.or()', () => {
 
@@ -48,6 +49,10 @@ describe('FutureOr', () => {
 
   it('extends Future', () => {
     expect(new FutureOr).to.be.an.instanceof(Future);
+  });
+
+  it('is considered a member of fluture/Fluture', () => {
+    expect(type(new FutureOr)).to.equal('fluture/Future');
   });
 
   describe('#fork()', () => {

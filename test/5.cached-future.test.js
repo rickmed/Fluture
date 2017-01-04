@@ -5,6 +5,7 @@ const Future = require('../fluture.js');
 const CachedFuture = Future.classes.CachedFuture;
 const U = require('./util');
 const F = require('./futures');
+const type = require('sanctuary-type-identifiers');
 
 describe('Future.cache()', () => {
 
@@ -36,6 +37,10 @@ describe('CachedFuture', () => {
 
   it('extends Future', () => {
     expect(new CachedFuture).to.be.an.instanceof(Future);
+  });
+
+  it('is considered a member of fluture/Fluture', () => {
+    expect(type(new CachedFuture)).to.equal('fluture/Future');
   });
 
   describe('#fork()', () => {

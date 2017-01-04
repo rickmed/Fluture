@@ -5,6 +5,7 @@ const Future = require('../fluture.js');
 const FutureHook = Future.classes.FutureHook;
 const U = require('./util');
 const F = require('./futures');
+const type = require('sanctuary-type-identifiers');
 
 describe('Future.hook()', () => {
 
@@ -55,6 +56,10 @@ describe('FutureHook', () => {
 
   it('extends Future', () => {
     expect(new FutureHook).to.be.an.instanceof(Future);
+  });
+
+  it('is considered a member of fluture/Fluture', () => {
+    expect(type(new FutureHook)).to.equal('fluture/Future');
   });
 
   describe('#fork()', () => {

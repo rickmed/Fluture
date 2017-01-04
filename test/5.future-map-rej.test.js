@@ -5,6 +5,7 @@ const Future = require('../fluture.js');
 const FutureMapRej = Future.classes.FutureMapRej;
 const U = require('./util');
 const F = require('./futures');
+const type = require('sanctuary-type-identifiers');
 
 describe('Future.mapRej()', () => {
 
@@ -53,6 +54,10 @@ describe('FutureMapRej', () => {
 
   it('extends Future', () => {
     expect(new FutureMapRej).to.be.an.instanceof(Future);
+  });
+
+  it('is considered a member of fluture/Fluture', () => {
+    expect(type(new FutureMapRej)).to.equal('fluture/Future');
   });
 
   describe('#fork()', () => {

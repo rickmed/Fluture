@@ -7,6 +7,7 @@ const U = require('./util');
 const F = require('./futures');
 const RamdaFuture = require('ramda-fantasy').Future;
 const DataTask = require('data.task');
+const type = require('sanctuary-type-identifiers');
 
 describe('Future.fromForkable()', () => {
 
@@ -26,6 +27,10 @@ describe('FutureFromForkable', () => {
 
   it('extends Future', () => {
     expect(new FutureFromForkable).to.be.an.instanceof(Future);
+  });
+
+  it('is considered a member of fluture/Fluture', () => {
+    expect(type(new FutureFromForkable)).to.equal('fluture/Future');
   });
 
   describe('#fork()', () => {

@@ -5,6 +5,7 @@ const Future = require('../fluture.js');
 const FutureBimap = Future.classes.FutureBimap;
 const U = require('./util');
 const F = require('./futures');
+const type = require('sanctuary-type-identifiers');
 
 describe('Future.bimap()', () => {
 
@@ -66,6 +67,10 @@ describe('FutureBimap', () => {
 
   it('extends Future', () => {
     expect(new FutureBimap).to.be.an.instanceof(Future);
+  });
+
+  it('is considered a member of fluture/Fluture', () => {
+    expect(type(new FutureBimap)).to.equal('fluture/Future');
   });
 
   describe('#fork()', () => {

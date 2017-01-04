@@ -5,6 +5,7 @@ const Future = require('../fluture.js');
 const FutureSwap = Future.classes.FutureSwap;
 const U = require('./util');
 const F = require('./futures');
+const type = require('sanctuary-type-identifiers');
 
 describe('Future.swap()', () => {
 
@@ -36,6 +37,10 @@ describe('FutureSwap', () => {
 
   it('extends Future', () => {
     expect(new FutureSwap).to.be.an.instanceof(Future);
+  });
+
+  it('is considered a member of fluture/Fluture', () => {
+    expect(type(new FutureSwap)).to.equal('fluture/Future');
   });
 
   describe('#fork()', () => {
